@@ -5,8 +5,8 @@ import ua.edu.ucu.functions.MyComparator;
 import java.util.Arrays;
 
 // Sorts elements using MyComparator to compare them
-public class SortDecorator extends SmartArrayDecorator{
-    MyComparator func;
+public class SortDecorator extends SmartArrayDecorator {
+    private final MyComparator func;
     public SortDecorator(SmartArray smartArray, MyComparator func) {
         super(smartArray);
         this.func = func;
@@ -14,7 +14,8 @@ public class SortDecorator extends SmartArrayDecorator{
     }
     @Override
     public Object[] toArray() {
-        return Arrays.stream(smartArray.toArray()).sorted(func).toArray();
+        return Arrays
+                .stream(smartArray.toArray()).sorted(func).toArray();
     }
 
     @Override

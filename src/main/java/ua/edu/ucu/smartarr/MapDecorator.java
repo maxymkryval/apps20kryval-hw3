@@ -4,8 +4,8 @@ import ua.edu.ucu.functions.MyFunction;
 
 import java.util.Arrays;
 
-public class MapDecorator extends SmartArrayDecorator{
-    MyFunction function;
+public class MapDecorator extends SmartArrayDecorator {
+    private final MyFunction function;
     public MapDecorator(SmartArray smartArray, MyFunction function) {
         super(smartArray);
         this.function = function;
@@ -13,7 +13,8 @@ public class MapDecorator extends SmartArrayDecorator{
 
     @Override
     public Object[] toArray() {
-        return Arrays.stream(smartArray.toArray()).map(function::apply).toArray();
+        return Arrays.stream(smartArray.toArray())
+                .map(function::apply).toArray();
     }
 
     @Override

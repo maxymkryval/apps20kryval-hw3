@@ -5,7 +5,7 @@ import ua.edu.ucu.functions.MyPredicate;
 import java.util.Arrays;
 
 public class FilterDecorator extends SmartArrayDecorator {
-    MyPredicate predicate;
+    private final MyPredicate predicate;
     public FilterDecorator(SmartArray smartArray, MyPredicate predicate) {
         super(smartArray);
         this.predicate = predicate;
@@ -13,7 +13,8 @@ public class FilterDecorator extends SmartArrayDecorator {
 
     @Override
     public Object[] toArray() {
-        return Arrays.stream(smartArray.toArray()).filter(predicate::test).toArray();
+        return Arrays.stream(smartArray.toArray())
+                .filter(predicate::test).toArray();
     }
 
     @Override
